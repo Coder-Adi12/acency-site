@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { 
   Users, PenTool, Star, Search, 
   CheckCheck, ArrowRight, Instagram, 
-  Facebook, Twitter, Youtube, Target, Camera
+  Facebook, Twitter, Youtube, Target, Camera, CheckCircle2
 } from 'lucide-react';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 
@@ -73,9 +73,9 @@ const Services = () => {
         <div className="section-container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             {mainServices.map((service, index) => (
-              <a 
+              <Link 
                 key={index} 
-                href={`#${service.id}`}
+                to={`#${service.id}`}
                 className="service-card animate-on-scroll group"
                 style={{ animationDelay: `${0.1 * index}s` }}
               >
@@ -87,7 +87,7 @@ const Services = () => {
                 <div className="inline-flex items-center text-agency-purple group-hover:translate-x-2 transition-transform duration-300">
                   Learn more <ArrowRight size={16} className="ml-1" />
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
