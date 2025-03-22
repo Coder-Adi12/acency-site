@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -32,8 +31,8 @@ const Navbar = () => {
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'py-3 bg-white/80 backdrop-blur-lg shadow-sm' 
+        scrolled || mobileMenuOpen
+          ? 'py-3 bg-white/95 backdrop-blur-lg shadow-sm' 
           : 'py-5 bg-transparent'
       }`}
     >
@@ -80,8 +79,8 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 py-2 animate-fade-in">
-            <div className="flex flex-col space-y-2">
+          <div className="md:hidden mt-4 py-2 animate-fade-in bg-white rounded-lg shadow-md">
+            <div className="flex flex-col space-y-2 px-4">
               <Link 
                 to="/" 
                 className={`nav-link py-3 ${isLinkActive('/') ? 'active' : ''}`}
@@ -112,7 +111,7 @@ const Navbar = () => {
               </Link>
               <Link 
                 to="/contact" 
-                className="btn-primary w-full text-center mt-2"
+                className="btn-primary w-full text-center mt-2 mb-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Get Started
