@@ -4,6 +4,8 @@ import {
   Award, TrendingUp, Users, ArrowRight, 
   Star, Target, Zap, ShieldCheck
 } from 'lucide-react';
+import { getImagePath } from '@/lib/utils';
+import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 
 const About = () => {
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -29,6 +31,9 @@ const About = () => {
       }
     };
   }, []);
+
+  // Initialize the intersection observer
+  useIntersectionObserver();
 
   const team = [
     {
@@ -171,34 +176,28 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-white">
+      <section id="team" className="py-20 bg-white">
         <div className="section-container">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-agency-purple font-semibold mb-2 inline-block animate-on-scroll">Meet Our Team</span>
-            <h2 className="text-agency-blue mb-6 animate-on-scroll">The Experts Behind Our Success</h2>
+            <span className="text-agency-purple font-semibold mb-2 inline-block animate-on-scroll">The Team</span>
+            <h2 className="text-agency-blue mb-6 animate-on-scroll">Meet Our Experts</h2>
             <p className="text-gray-600 animate-on-scroll">
-              Our diverse team of specialists brings together expertise across social media, design, content, and analytics.
+              Our team of passionate social media professionals is dedicated to helping your brand succeed online.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {team.map((member, index) => (
-              <div 
-                key={index}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] animate-on-scroll"
-                style={{ animationDelay: `${0.1 * index}s` }}
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                  />
-                </div>
-                <div className="p-6">
+              <div key={index} className="flex flex-col md:flex-row gap-6 items-start animate-on-scroll" style={{ animationDelay: `${0.1 * index}s` }}>
+                <img 
+                  src={getImagePath(member.image)} 
+                  alt={member.name} 
+                  className="w-24 h-24 rounded-full object-cover" 
+                />
+                <div>
                   <h3 className="text-xl font-semibold text-agency-blue">{member.name}</h3>
-                  <p className="text-agency-purple mb-3">{member.position}</p>
-                  <p className="text-gray-600 text-sm">{member.bio}</p>
+                  <p className="text-agency-purple mb-2">{member.position}</p>
+                  <p className="text-gray-600">{member.bio}</p>
                 </div>
               </div>
             ))}

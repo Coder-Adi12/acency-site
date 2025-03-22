@@ -1,5 +1,5 @@
-
 import TestimonialCard from './TestimonialCard';
+import { getImagePath } from '@/lib/utils';
 
 const TestimonialsSection = () => {
   const testimonials = [
@@ -37,7 +37,7 @@ const TestimonialsSection = () => {
               key={index}
               name={testimonial.name}
               company={testimonial.company}
-              image={testimonial.image}
+              image={getImagePath(testimonial.image)}
               quote={testimonial.quote}
               index={index}
             />
