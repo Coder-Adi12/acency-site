@@ -188,16 +188,22 @@ const About = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {team.map((member, index) => (
-              <div key={index} className="flex flex-col md:flex-row gap-6 items-start animate-on-scroll" style={{ animationDelay: `${0.1 * index}s` }}>
-                <img 
-                  src={getImagePath(member.image)} 
-                  alt={member.name} 
-                  className="w-24 h-24 rounded-full object-cover" 
-                />
-                <div>
-                  <h3 className="text-xl font-semibold text-agency-blue">{member.name}</h3>
-                  <p className="text-agency-purple mb-2">{member.position}</p>
-                  <p className="text-gray-600">{member.bio}</p>
+              <div 
+                key={index} 
+                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 animate-on-scroll" 
+                style={{ animationDelay: `${0.1 * index}s` }}
+              >
+                <div className="flex flex-col md:flex-row gap-6 items-start">
+                  <img 
+                    src={getImagePath(member.image)} 
+                    alt={member.name} 
+                    className="w-24 h-24 rounded-full object-cover border-4 border-agency-purple/20" 
+                  />
+                  <div>
+                    <h3 className="text-xl font-semibold text-agency-blue">{member.name}</h3>
+                    <p className="text-agency-purple mb-2">{member.position}</p>
+                    <p className="text-gray-600">{member.bio}</p>
+                  </div>
                 </div>
               </div>
             ))}
